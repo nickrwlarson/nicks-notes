@@ -16,7 +16,7 @@
 <div class="hero">
   <div class="hero-tag">Book Notes</div>
   <h1>Reading in Public</h1>
-  <p>Quick recommendations and key takeaways.</p>
+  <p>Quick recommendations and key takeaways</p>
 </div>
 
 <div class="container">
@@ -64,6 +64,8 @@ let activeTag = 'All';
 
 function getAllTags() {
   const tags = new Set(POSTS.map(p => p.tag).filter(Boolean));
+  // Ensure Kids Books appears in the filter even before any posts are tagged with it
+  tags.add('Kids Books');
   return ['All', ...Array.from(tags)];
 }
 
