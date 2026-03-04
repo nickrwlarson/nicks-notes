@@ -26,7 +26,7 @@ function getNavHTML(activePage) {
 function getFooterHTML() {
   return `
   <footer>
-    <span>${SITE_NAME}</span> · Made with ♥
+    <span>${SITE_NAME}</span> · Made with Claude
   </footer>
   <div class="toast" id="toast"></div>
   `;
