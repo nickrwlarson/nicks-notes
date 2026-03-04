@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorite Shelf — Nick's Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script src="shared.js"></script>
+<script>document.write(getNavHTML('favorites'));</script>
+
+<div class="container">
+  <div style="max-width:660px">
+    <h1 style="font-family:'Source Serif 4',serif;font-size:2rem;font-weight:600;color:var(--brown);margin-bottom:0.5rem">Favorite Shelf</h1>
+    <p style="font-size:1rem;color:var(--text-light);font-style:italic;margin-bottom:2.5rem">The books I'd hand to anyone, without hesitation. Click any title with notes to read them.</p>
+
+    <!-- ── PHILOSOPHY ── -->
+    <div class="fav-category">
+      <div class="fav-category-label">Philosophy</div>
+      <div class="fav-books">
+
+        <a class="fav-book has-post" href="posts/meditations.html">
+          <img class="fav-cover" src="https://covers.openlibrary.org/b/isbn/9780812968255-M.jpg" alt="Meditations cover" onerror="this.style.display='none'">
+          <div class="fav-info">
+            <div class="fav-title fav-linked">Meditations</div>
+            <div class="fav-author">Marcus Aurelius</div>
+            <div class="fav-note">The most honest book ever written. A Roman emperor reminding himself how to be a decent person.</div>
+          </div>
+        </a>
+
+        <div class="fav-book">
+          <img class="fav-cover" src="https://covers.openlibrary.org/b/isbn/9780872204645-M.jpg" alt="Nicomachean Ethics cover" onerror="this.style.display='none'">
+          <div class="fav-info">
+            <div class="fav-title">The Nicomachean Ethics</div>
+            <div class="fav-author">Aristotle</div>
+            <div class="fav-note">The original guide to living well. Dense, but worth every page.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── BUSINESS ── -->
+    <div class="fav-category">
+      <div class="fav-category-label">Business</div>
+      <div class="fav-books">
+
+        <a class="fav-book has-post" href="posts/zero-to-one.html">
+          <img class="fav-cover" src="https://covers.openlibrary.org/b/isbn/9780804139021-M.jpg" alt="Zero to One cover" onerror="this.style.display='none'">
+          <div class="fav-info">
+            <div class="fav-title fav-linked">Zero to One</div>
+            <div class="fav-author">Peter Thiel</div>
+            <div class="fav-note">Contrarian, sharp, and full of ideas that don't appear anywhere else in business literature.</div>
+          </div>
+        </a>
+
+        <div class="fav-book">
+          <img class="fav-cover" src="https://covers.openlibrary.org/b/isbn/9780062273208-M.jpg" alt="Hard Thing cover" onerror="this.style.display='none'">
+          <div class="fav-info">
+            <div class="fav-title">The Hard Thing About Hard Things</div>
+            <div class="fav-author">Ben Horowitz</div>
+            <div class="fav-note">No platitudes. Just the brutal reality of building a company.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── BIOGRAPHY ── -->
+    <div class="fav-category">
+      <div class="fav-category-label">Biography</div>
+      <div class="fav-books">
+
+        <div class="fav-book">
+          <img class="fav-cover" src="https://covers.openlibrary.org/b/isbn/9780743223133-M.jpg" alt="Benjamin Franklin cover" onerror="this.style.display='none'">
+          <div class="fav-info">
+            <div class="fav-title">Benjamin Franklin: An American Life</div>
+            <div class="fav-author">Walter Isaacson</div>
+            <div class="fav-note">The most well-rounded person who ever lived, brought fully to life.</div>
+          </div>
+        </div>
+
+        <div class="fav-book">
+          <img class="fav-cover" src="https://covers.openlibrary.org/b/isbn/9781501135910-M.jpg" alt="Shoe Dog cover" onerror="this.style.display='none'">
+          <div class="fav-info">
+            <div class="fav-title">Shoe Dog</div>
+            <div class="fav-author">Phil Knight</div>
+            <div class="fav-note">The Nike origin story, told with remarkable candor. Reads like a novel.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── FINANCE ── -->
+    <div class="fav-category">
+      <div class="fav-category-label">Finance</div>
+      <div class="fav-books">
+
+        <a class="fav-book has-post" href="posts/psychology-of-money.html">
+          <img class="fav-cover" src="https://covers.openlibrary.org/b/isbn/9780857197689-M.jpg" alt="Psychology of Money cover" onerror="this.style.display='none'">
+          <div class="fav-info">
+            <div class="fav-title fav-linked">The Psychology of Money</div>
+            <div class="fav-author">Morgan Housel</div>
+            <div class="fav-note">The most important finance book of the last decade. Nothing about stock picks — everything about behavior.</div>
+          </div>
+        </a>
+
+        <div class="fav-book">
+          <img class="fav-cover" src="https://covers.openlibrary.org/b/isbn/9780060555665-M.jpg" alt="Intelligent Investor cover" onerror="this.style.display='none'">
+          <div class="fav-info">
+            <div class="fav-title">The Intelligent Investor</div>
+            <div class="fav-author">Benjamin Graham</div>
+            <div class="fav-note">The foundation. Everything else in value investing builds on this.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>document.write(getFooterHTML());</script>
+
+</body>
+</html>

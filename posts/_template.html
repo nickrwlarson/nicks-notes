@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CHANGE: Update title to match your post -->
+  <title>Book Title — Nick's Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<script src="../shared.js"></script>
+<script>document.write(getNavHTML(''));</script>
+
+<div class="container">
+
+  <div class="post-header">
+    <a class="back" href="../index.html">← Back to all notes</a>
+    <!-- CHANGE: Update tag to Philosophy / Business / Biography / Finance -->
+    <div class="post-tag-pill">Philosophy</div>
+    <!-- CHANGE: Update title -->
+    <h1>Book Title by Author Name</h1>
+    <div class="post-meta">
+      <!-- CHANGE: Update date -->
+      <span>January 1, 2025</span> · <span>5 min read</span>
+    </div>
+  </div>
+
+  <hr class="post-divider">
+
+  <!-- Book cover + content side by side -->
+  <div class="post-layout">
+
+    <!-- CHANGE: Replace src with your Open Library cover URL
+         Find covers at: https://covers.openlibrary.org/b/isbn/YOUR_ISBN-L.jpg
+         Replace YOUR_ISBN with the book's ISBN (find on back cover or Google) -->
+    <img class="post-cover"
+         src="https://covers.openlibrary.org/b/isbn/YOUR_ISBN-L.jpg"
+         alt="Book Title cover"
+         onerror="this.outerHTML='<div class=\'post-cover-placeholder\'>📖</div>'">
+
+    <div>
+      <!-- CHANGE: Write your post content below -->
+      <div class="post-body">
+
+        <p>Your opening paragraph goes here. Set the scene — what is this book, why did you read it, what were you expecting?</p>
+
+        <h2>The Central Idea</h2>
+
+        <p>Summarize the core argument or premise of the book in your own words.</p>
+
+        <blockquote class="pull-quote">
+          A memorable quote from the book goes here.
+        </blockquote>
+
+        <h2>What Stuck With Me</h2>
+
+        <p>The ideas, arguments, or stories that you keep thinking about after finishing.</p>
+
+        <h3>A Sub-point</h3>
+
+        <p>More detail on a specific idea if needed.</p>
+
+        <h2>Verdict</h2>
+
+        <p>Who should read this? What's your overall take? Would you recommend it and to whom?</p>
+
+      </div>
+    </div>
+  </div>
+
+  <script>document.write(newsletterBlock('nl-post'));</script>
+
+</div>
+
+<script>document.write(getFooterHTML());</script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick's Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script src="shared.js"></script>
+<script>document.write(getNavHTML('home'));</script>
+
+<div class="hero">
+  <div class="hero-tag">Book Notes</div>
+  <h1>Reading in Public</h1>
+  <p>Quick recommendations and key takeaways.</p>
+</div>
+
+<div class="container">
+  <div class="tags-filter" id="tags-filter"></div>
+  <div class="posts-grid" id="posts-grid"></div>
+  <div class="no-results" id="no-results" style="display:none">No posts found.</div>
+  <div id="newsletter-area"></div>
+</div>
+
+<script>document.write(getFooterHTML());</script>
+
+<script>
+// ── POST INDEX ──
+// To add a new post: copy one of these objects and fill in your details.
+// The "file" field should match the filename in the posts/ folder.
+const POSTS = [
+  {
+    title: "Meditations by Marcus Aurelius",
+    tag: "Philosophy",
+    excerpt: "A Roman emperor's private journal, never meant to be published. That's what makes it extraordinary.",
+    cover: "https://covers.openlibrary.org/b/isbn/9780812968255-M.jpg",
+    date: "2025-01-10",
+    file: "posts/meditations.html"
+  },
+  {
+    title: "The Psychology of Money by Morgan Housel",
+    tag: "Finance",
+    excerpt: "The best finance book in years has almost nothing to do with finance.",
+    cover: "https://covers.openlibrary.org/b/isbn/9780857197689-M.jpg",
+    date: "2025-02-01",
+    file: "posts/psychology-of-money.html"
+  },
+  {
+    title: "Zero to One by Peter Thiel",
+    tag: "Business",
+    excerpt: "Contrarian, uncomfortable, and full of ideas that don't appear anywhere else.",
+    cover: "https://covers.openlibrary.org/b/isbn/9780804139021-M.jpg",
+    date: "2025-02-18",
+    file: "posts/zero-to-one.html"
+  }
+];
+
+// ── RENDER ──
+let activeTag = 'All';
+
+function getAllTags() {
+  const tags = new Set(POSTS.map(p => p.tag).filter(Boolean));
+  return ['All', ...Array.from(tags)];
+}
+
+function formatDate(d) {
+  if (!d) return '';
+  return new Date(d + 'T12:00:00').toLocaleDateString('en-CA', { year:'numeric', month:'long', day:'numeric' });
+}
+
+function renderTags(filter) {
+  document.getElementById('tags-filter').innerHTML = getAllTags().map(t =>
+    `<button class="tag-btn ${t === (filter||activeTag) ? 'active' : ''}" onclick="setTag('${t}')">${t}</button>`
+  ).join('');
+}
+
+function setTag(tag) {
+  activeTag = tag;
+  renderPosts();
+}
+
+function renderPosts(query) {
+  renderTags();
+  const q = (query||'').toLowerCase();
+  const filtered = POSTS.filter(p => {
+    const tagMatch = activeTag === 'All' || p.tag === activeTag;
+    const searchMatch = !q || p.title.toLowerCase().includes(q) || (p.excerpt||'').toLowerCase().includes(q) || (p.tag||'').toLowerCase().includes(q);
+    return tagMatch && searchMatch;
+  });
+
+  const grid = document.getElementById('posts-grid');
+  const none = document.getElementById('no-results');
+
+  if (!filtered.length) {
+    grid.innerHTML = '';
+    none.style.display = 'block';
+    return;
+  }
+  none.style.display = 'none';
+  grid.innerHTML = filtered.slice().reverse().map(p => `
+    <a class="post-card" href="${p.file}">
+      <div class="post-card-img ${p.cover ? '' : 'no-cover'}">
+        ${p.cover
+          ? `<img src="${p.cover}" alt="${p.title}" onerror="this.parentElement.innerHTML='📖';this.parentElement.classList.add('no-cover')">`
+          : '📖'}
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-tag">${p.tag || ''}</div>
+        <h2>${p.title}</h2>
+        <p>${p.excerpt || ''}</p>
+        <div class="post-card-meta">${formatDate(p.date)}</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+// expose for shared.js search
+window._filterPosts = renderPosts;
+
+// Check for search query param (from other pages)
+const urlParams = new URLSearchParams(window.location.search);
+const qParam = urlParams.get('q');
+
+renderPosts(qParam || '');
+if (qParam) {
+  document.getElementById('search-bar').classList.add('open');
+  document.getElementById('search-input').value = qParam;
+}
+
+document.getElementById('newsletter-area').innerHTML = newsletterBlock('nl-email');
+</script>
+
+</body>
+</html>
