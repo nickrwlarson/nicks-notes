@@ -1,7 +1,5 @@
 // shared.js — injects header, footer, search bar, and toast into every page
-
 const SITE_NAME = "Nick's Notes";
-
 function getNavHTML(activePage) {
   return `
   <header>
@@ -22,16 +20,14 @@ function getNavHTML(activePage) {
   </div>
   `;
 }
-
 function getFooterHTML() {
   return `
   <footer>
-    <span>${SITE_NAME}</span> · Made with Claude
+    <span>${SITE_NAME}</span> · Built with Claude
   </footer>
   <div class="toast" id="toast"></div>
   `;
 }
-
 function toggleSearch() {
   const bar = document.getElementById('search-bar');
   bar.classList.toggle('open');
@@ -39,7 +35,6 @@ function toggleSearch() {
     document.getElementById('search-input').focus();
   }
 }
-
 // On non-index pages, search redirects to index with a query param
 function liveSearch(val) {
   if (window.location.pathname.includes('index') || window.location.pathname === '/') {
@@ -48,7 +43,6 @@ function liveSearch(val) {
     if (val.length > 1) window.location.href = `/index.html?q=${encodeURIComponent(val)}`;
   }
 }
-
 function showToast(msg) {
   const t = document.getElementById('toast');
   if (!t) return;
@@ -56,19 +50,17 @@ function showToast(msg) {
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
-
 function handleNewsletter(inputId) {
   const email = document.getElementById(inputId).value.trim();
   if (!email || !email.includes('@')) { showToast('Please enter a valid email.'); return; }
   showToast('Thanks for subscribing! 🎉');
   document.getElementById(inputId).value = '';
 }
-
 function newsletterBlock(inputId) {
   return `
   <div class="newsletter-block">
-    <h3>New notes in your inbox</h3>
-    <p>When I finish a book worth sharing, you'll be the first to know.</p>
+    <h3>Sign up for new notes</h3>
+    <p>No spam, no promotions, no regular email cadence — just a notification every time I share new notes.</p>
     <div class="newsletter-form">
       <input type="email" placeholder="your@email.com" id="${inputId}">
       <button onclick="handleNewsletter('${inputId}')">Subscribe</button>
